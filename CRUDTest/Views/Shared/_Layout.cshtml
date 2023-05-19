@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CRUDTest</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CRUDTest.styles.css" asp-append-version="true" />
+	<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Products" asp-action="Index">CRUDTest</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+
+                        <li class="nav-item">
+                             <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Listagem de Produtos </a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Create">Adicionar Produtos </a>
+
+                        </li>
+                        <li>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Management">Gerenciamento de Produtos </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="LogOut">Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+                <form class="form-inline my-2 my-lg-0">
+					<button class="btn btn-primary my-2 my-sm-0" onclick="openModal()" type="button" data-toggle="modal" data-target="#exampleModal">
+                        <svg style="width:32px; height:32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" /></svg>
+                    </button>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <svg style="width:32px; height:32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" /></svg>
+                        <h5 class="modal-title" id="exampleModalLabel1">
+                            Carrinho
+                        </h5>
+                        <button type="button" onclick="closeModal()" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="modalBody" class="modal-body">
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" onclick="closeModal()" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Continuar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - CRUDTest - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+<script type="text/javascript">
+    var cart = null
+	function openModal() {
+		$('#exampleModal1').modal('show')
+        $.ajax({
+            url: "/Carts/Index",
+            type: "GET",
+            contentType: "application/json",
+            error: function () {
+
+            },
+            success: function (data) {
+                if(data){
+                    $.ajax({
+                        url: "/Products/List",
+                        type: "GET",
+                        contentType: "application/json",
+                        error: function () {
+
+                        },
+                        success: function (data2) {
+                            console.log(data2)
+                            data.map(e=>{
+                                e.products = data2.filter(f => f.id == e.productId)[0]
+                                return e
+                            })
+                            document.getElementById("modalBody").innerHTML = "";
+                            for(let i = 0; i < data.length; i++){
+                                console.log(data)
+                                document.getElementById("modalBody").innerHTML +=
+                                `<div class="row">
+                                        <div class="col-xs-2"><img width="200" heght="200" class="img-responsive" src="${data[i].products.image}">
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <h4 class="product-name"><strong>${data[i].products.name}</strong></h4><h4><small>${data[i].products.description}</small></h4>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="col-xs-6 text-right">
+                                                <h6><strong>R$${data[i].products.value} <span class="text-muted">x</span></strong></h6>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <input type="text" class="form-control input-sm" value="1">
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <button type="button" class="btn btn-link btn-xs">
+                                                    <span class="glyphicon glyphicon-trash"> </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                            }
+                        }
+                    })
+
+                }
+
+            }
+
+        })
+	}
+
+    function closeModal() {
+        $('#exampleModal1').modal('hide')
+    }
+</script>

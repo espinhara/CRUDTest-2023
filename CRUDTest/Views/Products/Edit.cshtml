@@ -1,0 +1,44 @@
+﻿@model Products
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form method="post" asp-controller="Products" asp-action="Edit" enctype="multipart/form-data">
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <input type="number" id="form6Example1" readonly asp-for="Id" class="form-control" />
+                <label class="form-label" for="form6Example1">Id</label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-outline">
+                <input type="text" id="form6Example1" asp-for="Name" class="form-control" />
+                <label class="form-label" for="form6Example1">Nome</label>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <input type="file" id="form6Example1" asp-for="Image" class="form-control" />
+                <label class="form-label" for="form6Example1">Imagem</label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-outline">
+                <input type="text" id="form6Example1" asp-for="Value" class="form-control" />
+                <label class="form-label" for="form6Example1">Preço</label>
+            </div>
+        </div>
+    </div>
+    <div class="form-outline mb-4">
+        <textarea class="form-control" asp-for="Description" id="form6Example7" rows="4"></textarea>
+        <label class="form-label" for="form6Example7">Descrição</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block mb-4">Editar Produto</button>
+   
+</form>
